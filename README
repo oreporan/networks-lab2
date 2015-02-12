@@ -1,0 +1,23 @@
+Lab2 - ProxyServer
+
+Classes:
+
+====ProxyServer====
+Handles new socket connections, if there are less than the max
+threads, it passes the new connection to the ConnectionHandler
+
+====ConnectionHandler====
+Utility Static class that checks if the received connection exists, if it does, 
+the handler does anything because the open connection will intercept.
+If the connection is new, create a new TCPconnection and a new thread to handle it.
+With every new connection that arrives, the thread queue checks and closes
+timed-out connections that have been open too long.
+
+====TCPConnection===
+Runnable class, parses the input stream from the socket and verifies if its a 
+proxy request (to the web) or an inner request (to logs or policies). 
+If its a proxy request - the thread validates its legality, and transfers
+the request/response data between the client and the host server.
+Once the request has been fully handled, a timeout is opened on this connection
+(only if there is a keep-alive). 
+
