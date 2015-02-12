@@ -1,3 +1,4 @@
 block-site "one.co.il"
 block-resource ".jpg"
 block-resource ".avi"
+block-ip-mask "216.58.210.3/32"

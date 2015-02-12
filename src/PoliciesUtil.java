@@ -95,6 +95,7 @@ public class PoliciesUtil {
 
 	private static boolean isLegalIP(String i_host) {
 		try {
+			// Get the IP of the host (DNS)
 			InetAddress address = InetAddress.getByName(new URL(i_host).getHost());
 			String ipToCheck = address.getHostAddress();
 			for (String policy : BLOCK_IP_MASK_VALUE) {
